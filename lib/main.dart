@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: AppConstants.appName,
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: appColor),
           useMaterial3: true,
           textTheme: GoogleFonts.interTextTheme(),
           scaffoldBackgroundColor: appWhite,
