@@ -81,13 +81,16 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CircleAvatar(
-                        radius: 12,
-                        backgroundColor: appWhite,
-                        child: Icon(
-                          Icons.refresh_outlined,
-                          color: appColor,
-                          size: 20,
+                      GestureDetector(
+                        onTap: (){},
+                        child: CircleAvatar(
+                          radius: 12,
+                          backgroundColor: appWhite,
+                          child: Icon(
+                            Icons.refresh_outlined,
+                            color: appColor,
+                            size: 20,
+                          ),
                         ),
                       ),
                       Gap(1.w),
@@ -233,7 +236,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             padding: EdgeInsets.all(3.w),
                             child: CircleAvatar(
-                              backgroundColor: appCircle,
+                              backgroundColor: appWhite,
                               child: Image.asset("assets/images/credit.png"),
                             ),
                           ),
@@ -260,7 +263,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             padding: EdgeInsets.all(3.w),
                             child: CircleAvatar(
-                              backgroundColor: appCircle,
+                              backgroundColor: appWhite,
                               child: Image.asset("assets/images/assurance.png"),
                             ),
                           ),
@@ -293,7 +296,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             padding: EdgeInsets.all(3.w),
                             child: CircleAvatar(
-                              backgroundColor: appCircle,
+                              backgroundColor: appWhite,
                               child: Image.asset("assets/images/monetique.png"),
                             ),
                           ),
@@ -320,7 +323,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             padding: EdgeInsets.all(3.w),
                             child: CircleAvatar(
-                              backgroundColor: appCircle,
+                              backgroundColor: appWhite,
                               child: Image.asset("assets/images/mail.png"),
                             ),
                           ),
