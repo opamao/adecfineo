@@ -19,15 +19,16 @@ class CancelButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: double.infinity,
       height: height ?? 12.w,
+      padding: EdgeInsets.symmetric(horizontal: 2.w),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: appWhite,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(3.w),
-            side: BorderSide(color: appColor),
+            side: BorderSide(color: appOrange),
           ),
         ),
         onPressed: onPressed,

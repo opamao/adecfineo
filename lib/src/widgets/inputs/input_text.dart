@@ -44,8 +44,6 @@ class InputText extends StatelessWidget {
       ),
       padding: EdgeInsets.symmetric(horizontal: 2.w),
       child: TextFormField(
-        /* onTap: isClickable ? onTap : null,
-        readOnly: !isClickable,*/
         keyboardType: keyboardType,
         controller: controller,
         obscureText: obscureText,

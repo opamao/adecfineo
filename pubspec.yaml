@@ -15,6 +15,7 @@ dependencies:
   google_fonts: ^6.2.1
   gap: ^3.0.1
   sizer: ^2.0.15
+  modal_bottom_sheet: ^3.0.0
 
 dev_dependencies:
   flutter_test:

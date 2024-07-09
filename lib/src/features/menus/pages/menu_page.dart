@@ -2,6 +2,9 @@ import 'package:adecfineo/src/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../comptes/comptes.dart';
+import '../../home/home.dart';
+
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
 
@@ -12,8 +15,8 @@ class MenuPage extends StatefulWidget {
 class _MenuPageState extends State<MenuPage> {
   int currentPageIndex = 0;
 
-  final Widget _home = Container();
-  final Widget _compte = Container();
+  final Widget _home = const HomePage();
+  final Widget _compte = const ComptePage();
   final Widget _transfert = Container();
   final Widget _credit = Container();
   final Widget _others = Container();
@@ -84,6 +87,7 @@ class _MenuPageState extends State<MenuPage> {
       bottomNavigationBar: NavigationBar(
         backgroundColor: appWhite,
         surfaceTintColor: appWhite,
+        indicatorColor: appOrange.withOpacity(.11),
         onDestinationSelected: (int index) {
           setState(() {
             currentPageIndex = index;
