@@ -104,31 +104,31 @@ class _MenuPageState extends State<MenuPage> {
           ),
           NavigationDestination(
             icon: Icon(
-              Icons.person_outlined,
+              Icons.account_balance_outlined,
               color: currentPageIndex == 1 ? appOrange : appBlack,
             ),
             label: "Compte",
           ),
           NavigationDestination(
             icon: Icon(
-              Icons.swap_horiz_outlined,
+              Icons.monetization_on_outlined,
               color: currentPageIndex == 2 ? appOrange : appBlack,
             ),
-            label: "Transfert",
+            label: "Monétique",
           ),
           NavigationDestination(
             icon: Icon(
-              Icons.wallet_outlined,
+              Icons.payments_outlined,
               color: currentPageIndex == 3 ? appOrange : appBlack,
             ),
             label: "Crédit",
           ),
           NavigationDestination(
             icon: Icon(
-              Icons.widgets_outlined,
+              Icons.person_outlined,
               color: currentPageIndex == 4 ? appOrange : appBlack,
             ),
-            label: "Autes",
+            label: "Profil",
           ),
         ],
       ),
