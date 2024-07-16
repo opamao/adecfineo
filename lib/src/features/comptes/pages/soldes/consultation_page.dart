@@ -4,8 +4,8 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:sizer/sizer.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
-import '../../../themes/themes.dart';
-import '../comptes.dart';
+import '../../../../themes/themes.dart';
+import '../../comptes.dart';
 
 class ConsultationPage extends StatefulWidget {
   const ConsultationPage({super.key});

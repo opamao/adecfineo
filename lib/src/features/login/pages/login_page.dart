@@ -108,21 +108,18 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         Gap(2.h),
-                        SizedBox(
-                          width: 60.w,
-                          child: SubmitButton(
-                            AppConstants.btnLogin,
-                            onPressed: () {
-                              if (_formkey.currentState!.validate()) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const MenuPage(),
-                                  ),
-                                );
-                              }
-                            },
-                          ),
+                        SubmitButton(
+                          AppConstants.btnLogin,
+                          onPressed: () {
+                            if (_formkey.currentState!.validate()) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const MenuPage(),
+                                ),
+                              );
+                            }
+                          },
                         ),
                         Gap(2.h),
                         Center(
