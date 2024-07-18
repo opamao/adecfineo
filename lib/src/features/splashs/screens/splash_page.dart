@@ -4,7 +4,6 @@ import 'package:sizer/sizer.dart';
 
 import '../../../themes/themes.dart';
 import '../../login/login.dart';
-import '../splashs.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});

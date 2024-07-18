@@ -5,6 +5,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../comptes/comptes.dart';
 import '../../home/home.dart';
+import '../../transferts/transaction.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
@@ -18,7 +19,7 @@ class _MenuPageState extends State<MenuPage> {
 
   final Widget _home = const HomePage();
   final Widget _compte = const ComptePage();
-  final Widget _transfert = Container();
+  final Widget _monetique = Container();
   final Widget _credit = Container();
   final Widget _others = Container();
 
@@ -28,7 +29,7 @@ class _MenuPageState extends State<MenuPage> {
       children: [
         Row(
           children: [
-            Expanded(
+            const Expanded(
               child: ClipOval(
                 child: FlutterLogo(),
               ),
@@ -115,7 +116,14 @@ class _MenuPageState extends State<MenuPage> {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const TransactionPage(),
+                      ),
+                    );
+                  },
                   leading: CircleAvatar(
                     backgroundColor: appWhite,
                     child: Image.asset(
@@ -415,7 +423,7 @@ class _MenuPageState extends State<MenuPage> {
     } else if (currentPageIndex == 1) {
       return _compte;
     } else if (currentPageIndex == 2) {
-      return _transfert;
+      return _monetique;
     } else if (currentPageIndex == 3) {
       return _credit;
     } else {

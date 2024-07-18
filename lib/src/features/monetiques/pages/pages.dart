@@ -1,0 +1,1 @@
+export 'monetique_page.dart';

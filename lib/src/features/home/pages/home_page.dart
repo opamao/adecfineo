@@ -446,7 +446,7 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: ListTile(
-                      leading: CircleAvatar(
+                      leading: const CircleAvatar(
                         child: FlutterLogo(),
                       ),
                       title: Text(

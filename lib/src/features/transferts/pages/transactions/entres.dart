@@ -1,0 +1,1 @@
+export 'entre_page.dart';
