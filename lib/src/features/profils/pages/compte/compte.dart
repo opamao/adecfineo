@@ -1,1 +1,1 @@
-export 'compte_page.dart';
+export 'compte_profil_page.dart';

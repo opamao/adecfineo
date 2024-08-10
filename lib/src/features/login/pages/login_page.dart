@@ -64,6 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                                 validatorMessage: "Saisir code",
                               ),
                             ),
+                            Gap(2.w),
                             Expanded(
                               child: InputPassword(
                                 hintText: "Mot de passe",
@@ -98,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                               });
                             },
                             title: Text(
-                              "Memoriser login",
+                              "Garder ma session",
                               style: TextStyle(
                                 color: appWhiteText,
                                 fontSize: 12,
@@ -108,18 +109,21 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         Gap(2.h),
-                        SubmitButton(
-                          AppConstants.btnLogin,
-                          onPressed: () {
-                            if (_formkey.currentState!.validate()) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const MenuPage(),
-                                ),
-                              );
-                            }
-                          },
+                        SizedBox(
+                          width: 206,
+                          child: SubmitButton(
+                            AppConstants.btnLogin,
+                            onPressed: () {
+                              if (_formkey.currentState!.validate()) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const MenuPage(),
+                                  ),
+                                );
+                              }
+                            },
+                          ),
                         ),
                         Gap(2.h),
                         Center(
