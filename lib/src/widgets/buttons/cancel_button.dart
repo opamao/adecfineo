@@ -36,7 +36,7 @@ class CancelButton extends StatelessWidget {
           title,
           style: TextStyle(
             fontSize: fontSize ?? 12.sp,
-            color: appColor,
+            color: appOrange,
             fontWeight: FontWeight.bold,
           ),
           textAlign: TextAlign.center,

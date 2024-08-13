@@ -37,7 +37,7 @@ class _MonetiquePageState extends State<MonetiquePage> {
                 ),
               ),
               Expanded(
-                flex: 3,
+                flex: 4,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,

@@ -5,4 +5,6 @@ class AppConstants {
 
   static const btnLogin = "Connexion";
   static const btnValid = "Valider";
+  static const btnContinue = "Continuer";
+  static const btnCancel = "Annuler";
 }

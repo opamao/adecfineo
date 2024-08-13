@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:sizer/sizer.dart';
+import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 
+import '../../../../constants/constants.dart';
 import '../../../themes/themes.dart';
+import '../../../widgets/widgets.dart';
 import '../comptes.dart';
 
 class ComptePage extends StatefulWidget {
@@ -12,9 +16,110 @@ class ComptePage extends StatefulWidget {
   State<ComptePage> createState() => _ComptePageState();
 }
 
+const double _bottomPaddingForButton = 150.0;
+const double _pagePadding = 16.0;
+const double _pageBreakpoint = 768.0;
+
 class _ComptePageState extends State<ComptePage> {
   @override
   Widget build(BuildContext context) {
+    final pageIndexNotifier = ValueNotifier(0);
+
+    SliverWoltModalSheetPage page1(
+        BuildContext modalSheetContext, TextTheme textTheme) {
+      return WoltModalSheetPage(
+        backgroundColor: appWhite,
+        surfaceTintColor: appWhite,
+        hasSabGradient: false,
+        stickyActionBar: Padding(
+          padding: const EdgeInsets.all(_pagePadding),
+          child: Row(
+            children: [
+              Expanded(
+                child: CancelButton(
+                  AppConstants.btnCancel,
+                  onPressed: () => Navigator.of(modalSheetContext).pop(),
+                ),
+              ),
+              Gap(2.w),
+              Expanded(
+                child: SubmitButton(
+                  AppConstants.btnContinue,
+                  onPressed: () =>
+                      pageIndexNotifier.value = pageIndexNotifier.value + 1,
+                ),
+              ),
+            ],
+          ),
+        ),
+        topBarTitle: Text(
+          "Dépôt déplacé",
+          style: TextStyle(
+            color: appBlack,
+            fontSize: 15,
+            fontWeight: FontWeight.w500,
+            letterSpacing: 15 * 0.03,
+          ),
+        ),
+        isTopBarLayerAlwaysVisible: true,
+        trailingNavBarWidget: IconButton(
+          padding: const EdgeInsets.all(_pagePadding),
+          icon: const Icon(Icons.close),
+          onPressed: Navigator.of(modalSheetContext).pop,
+        ),
+        child: const DepotPage(),
+      );
+    }
+
+    SliverWoltModalSheetPage page2(
+        BuildContext modalSheetContext, TextTheme textTheme) {
+      return WoltModalSheetPage(
+        backgroundColor: appWhite,
+        surfaceTintColor: appWhite,
+        hasSabGradient: false,
+        stickyActionBar: Padding(
+          padding: const EdgeInsets.all(_pagePadding),
+          child: SubmitButton(
+            AppConstants.btnValid,
+            onPressed: () {
+              Navigator.of(modalSheetContext).pop();
+              pageIndexNotifier.value = 0;
+            },
+          ),
+        ),
+        pageTitle: Padding(
+          padding: const EdgeInsets.all(_pagePadding),
+          child: Text(
+            "Dépôt déplacé",
+            style: TextStyle(
+              color: appBlack,
+              fontSize: 15,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 15 * 0.03,
+            ),
+          ),
+        ),
+        leadingNavBarWidget: IconButton(
+          padding: const EdgeInsets.all(_pagePadding),
+          icon: const Icon(Icons.arrow_back_rounded),
+          onPressed: () =>
+              pageIndexNotifier.value = pageIndexNotifier.value - 1,
+        ),
+        trailingNavBarWidget: IconButton(
+          padding: const EdgeInsets.all(_pagePadding),
+          icon: const Icon(Icons.close),
+          onPressed: () {
+            Navigator.of(modalSheetContext).pop();
+            pageIndexNotifier.value = 0;
+          },
+        ),
+        child: const DepotFormOnePage(
+          pagePadding: _pagePadding,
+          bottomPaddingFroButton: _bottomPaddingForButton,
+        ),
+      );
+    }
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -102,7 +207,12 @@ class _ComptePageState extends State<ComptePage> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: ListTile(
-                        onTap: () {},
+                        onTap: () => showBarModalBottomSheet(
+                          expand: true,
+                          context: context,
+                          barrierColor: appColor,
+                          builder: (context) => const NouvellePage(),
+                        ),
                         leading: Image.asset("assets/images/nouvelle.png"),
                         title: Text(
                           "Nouvelle souscription",
@@ -152,7 +262,32 @@ class _ComptePageState extends State<ComptePage> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: ListTile(
-                        onTap: () {},
+                        onTap: () {
+                          WoltModalSheet.show<void>(
+                            pageIndexNotifier: pageIndexNotifier,
+                            context: context,
+                            pageListBuilder: (modalSheetContext) {
+                              final textTheme = Theme.of(context).textTheme;
+                              return [
+                                page1(modalSheetContext, textTheme),
+                                page2(modalSheetContext, textTheme),
+                              ];
+                            },
+                            modalTypeBuilder: (context) {
+                              final size = MediaQuery.of(context).size.width;
+                              if (size < _pageBreakpoint) {
+                                return WoltModalType.bottomSheet();
+                              } else {
+                                return WoltModalType.dialog();
+                              }
+                            },
+                            onModalDismissedWithBarrierTap: () {
+                              debugPrint('Closed modal sheet with barrier tap');
+                              Navigator.of(context).pop();
+                              pageIndexNotifier.value = 0;
+                            },
+                          );
+                        },
                         leading: Image.asset("assets/images/depot.png"),
                         title: Text(
                           "Dépôt déplacé",
@@ -177,7 +312,12 @@ class _ComptePageState extends State<ComptePage> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: ListTile(
-                        onTap: () {},
+                        onTap: () => showBarModalBottomSheet(
+                          expand: true,
+                          context: context,
+                          barrierColor: appColor,
+                          builder: (context) => const ChequePage(),
+                        ),
                         leading: Image.asset("assets/images/cheque.png"),
                         title: Text(
                           "Chèque déplacé",

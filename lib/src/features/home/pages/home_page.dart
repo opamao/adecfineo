@@ -410,11 +410,35 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                         Gap(2.h),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 8.h,
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                  color: appColor,
+                                  borderRadius: BorderRadius.circular(4.w),
+                                ),
+                              ),
+                              Gap(2.w),
+                              Container(
+                                height: 8.h,
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                  color: appOrange,
+                                  borderRadius: BorderRadius.circular(4.w),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Transaction",
+                              "Dernière transactions",
                               style: TextStyle(
                                 color: appBlack,
                                 fontSize: 14,
@@ -435,16 +459,6 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                           ],
-                        ),
-                        Gap(2.h),
-                        Text(
-                          "Aujourd'hui",
-                          style: TextStyle(
-                            color: appBlack,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w300,
-                            letterSpacing: 12 * 0.03,
-                          ),
                         ),
                         Gap(1.h),
                         Container(
