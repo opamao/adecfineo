@@ -1,14 +1,15 @@
+import 'package:adecfineo/src/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 import 'input_text.dart';
 
-class InputPassword extends StatefulWidget {
+class InputPasswordForm extends StatefulWidget {
   final TextEditingController controller;
   final String validatorMessage;
   final String? hintText;
   final Widget? prefixIcon;
 
-  const InputPassword({
+  const InputPasswordForm({
     super.key,
     required this.controller,
     required this.validatorMessage,
@@ -18,10 +19,10 @@ class InputPassword extends StatefulWidget {
   });
 
   @override
-  State<InputPassword> createState() => _InputPasswordState();
+  State<InputPasswordForm> createState() => _InputPasswordFormState();
 }
 
-class _InputPasswordState extends State<InputPassword> {
+class _InputPasswordFormState extends State<InputPasswordForm> {
   bool _obscure = true;
 
   @override
@@ -32,6 +33,7 @@ class _InputPasswordState extends State<InputPassword> {
       obscureText: _obscure,
       prefixIcon: widget.prefixIcon,
       hintText: widget.hintText,
+      colorFille: appGrey,
       suffixIcon: IconButton(
         icon: Icon(_obscure ? Icons.visibility_off : Icons.visibility),
         onPressed: () {

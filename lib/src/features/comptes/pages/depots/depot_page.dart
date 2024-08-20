@@ -4,7 +4,6 @@ import 'package:gap/gap.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../themes/themes.dart';
-import '../../../../widgets/widgets.dart';
 
 class DepotPage extends StatefulWidget {
   const DepotPage({super.key,});
