@@ -3,7 +3,6 @@ import 'package:gap/gap.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../../../constants/constants.dart';
-import '../../../../../themes/themes.dart';
 import '../../../../../widgets/widgets.dart';
 
 class PasswordPage extends StatefulWidget {

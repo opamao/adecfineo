@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../themes/themes.dart';
+import '../credits.dart';
 
 class CreditPage extends StatefulWidget {
   const CreditPage({super.key});
@@ -44,7 +46,12 @@ class _CreditPageState extends State<CreditPage> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: ListTile(
-                        onTap: () {},
+                        onTap: () => showBarModalBottomSheet(
+                          expand: true,
+                          context: context,
+                          barrierColor: appColor,
+                          builder: (context) => const SimulateurPage(),
+                        ),
                         leading: Image.asset("assets/images/simulateur.png"),
                         title: Text(
                           "Simulateur de crédit",

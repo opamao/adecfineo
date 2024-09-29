@@ -32,6 +32,19 @@ class _MenuPageState extends State<MenuPage> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: currentPageIndex == 0 ? appColor : appWhite,
+        title: currentPageIndex == 2
+            ? Text(
+                "Monétique",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: appBlack,
+                  fontSize: 26,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 26 * 0.14,
+                ),
+              )
+            : Container(),
+        centerTitle: true,
         leading: Padding(
           padding: EdgeInsets.all(2.w),
           child: Image.asset(
@@ -52,8 +65,7 @@ class _MenuPageState extends State<MenuPage> {
                 enableDrag: false,
                 context: context,
                 barrierColor: appColor,
-                builder: (context) =>
-                const MenuAutrePage(),
+                builder: (context) => const MenuAutrePage(),
               ),
             );
           }),
