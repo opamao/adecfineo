@@ -136,7 +136,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ],
                         ),
-                        Gap(3.h),
+                        Gap(2.h),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
