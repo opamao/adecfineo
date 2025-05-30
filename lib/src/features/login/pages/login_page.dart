@@ -64,6 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                                 validatorMessage: "Saisir code",
                               ),
                             ),
+                            Gap(2.w),
                             Expanded(
                               child: InputPassword(
                                 hintText: "Mot de passe",
@@ -98,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                               });
                             },
                             title: Text(
-                              "Memoriser login",
+                              "Garder ma session",
                               style: TextStyle(
                                 color: appWhiteText,
                                 fontSize: 12,
@@ -109,7 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         Gap(2.h),
                         SizedBox(
-                          width: 60.w,
+                          width: 206,
                           child: SubmitButton(
                             AppConstants.btnLogin,
                             onPressed: () {

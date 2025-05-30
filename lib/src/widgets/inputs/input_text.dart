@@ -42,7 +42,7 @@ class InputText extends StatelessWidget {
         border: borderColor != null ? Border.all(color: borderColor!) : null,
         borderRadius: BorderRadius.circular(2.w),
       ),
-      padding: EdgeInsets.symmetric(horizontal: 2.w),
+      //padding: EdgeInsets.symmetric(horizontal: 2.w),
       child: TextFormField(
         keyboardType: keyboardType,
         controller: controller,

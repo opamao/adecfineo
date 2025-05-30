@@ -1,9 +1,14 @@
 import 'package:adecfineo/src/themes/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../comptes/comptes.dart';
+import '../../credits/credits.dart';
 import '../../home/home.dart';
+import '../../monetiques/monetique.dart';
+import '../../profils/profils.dart';
+import '../menus.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
@@ -17,52 +22,29 @@ class _MenuPageState extends State<MenuPage> {
 
   final Widget _home = const HomePage();
   final Widget _compte = const ComptePage();
-  final Widget _transfert = Container();
-  final Widget _credit = Container();
-  final Widget _others = Container();
+  final Widget _monetique = const MonetiquePage();
+  final Widget _credit = const CreditPage();
+  final Widget _others = const ProfilPage();
 
   @override
   Widget build(BuildContext context) {
-    final drawerHeader = UserAccountsDrawerHeader(
-      accountName: const Text(
-        "YAPI N'GUESSAN KOUASSI THEODORE",
-      ),
-      accountEmail: const Text(
-        "+2250585831647",
-      ),
-      currentAccountPicture: ClipOval(
-        child: Image.asset("assets/images/user.jpeg"),
-      ),
-    );
-    final drawerItems = ListView(
-      children: [
-        drawerHeader,
-        ListTile(
-          title: const Text(
-            "Item1",
-          ),
-          leading: const Icon(Icons.favorite),
-          onTap: () {
-            Navigator.pop(context);
-          },
-        ),
-        ListTile(
-          title: const Text(
-            "item2",
-          ),
-          onTap: () {
-            Navigator.pop(context);
-          },
-        ),
-      ],
-    );
     return Scaffold(
-      drawer: Drawer(
-        child: drawerItems,
-      ),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: currentPageIndex == 0 ? appColor : appWhite,
+        title: currentPageIndex == 2
+            ? Text(
+                "Monétique",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: appBlack,
+                  fontSize: 26,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 26 * 0.14,
+                ),
+              )
+            : Container(),
+        centerTitle: true,
         leading: Padding(
           padding: EdgeInsets.all(2.w),
           child: Image.asset(
@@ -75,11 +57,16 @@ class _MenuPageState extends State<MenuPage> {
           Builder(builder: (context) {
             return IconButton(
               icon: Icon(
-                Icons.filter_list_outlined,
+                Icons.menu_outlined,
                 color: currentPageIndex == 0 ? appWhite : appColor,
               ),
-              onPressed: () => Scaffold.of(context).openDrawer(),
-              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+              onPressed: () => showBarModalBottomSheet(
+                expand: true,
+                enableDrag: false,
+                context: context,
+                barrierColor: appColor,
+                builder: (context) => const MenuAutrePage(),
+              ),
             );
           }),
         ],
@@ -104,31 +91,31 @@ class _MenuPageState extends State<MenuPage> {
           ),
           NavigationDestination(
             icon: Icon(
-              Icons.person_outlined,
+              Icons.account_balance_outlined,
               color: currentPageIndex == 1 ? appOrange : appBlack,
             ),
             label: "Compte",
           ),
           NavigationDestination(
             icon: Icon(
-              Icons.swap_horiz_outlined,
+              Icons.monetization_on_outlined,
               color: currentPageIndex == 2 ? appOrange : appBlack,
             ),
-            label: "Transfert",
+            label: "Monétique",
           ),
           NavigationDestination(
             icon: Icon(
-              Icons.wallet_outlined,
+              Icons.payments_outlined,
               color: currentPageIndex == 3 ? appOrange : appBlack,
             ),
             label: "Crédit",
           ),
           NavigationDestination(
             icon: Icon(
-              Icons.widgets_outlined,
+              Icons.person_outlined,
               color: currentPageIndex == 4 ? appOrange : appBlack,
             ),
-            label: "Autes",
+            label: "Profil",
           ),
         ],
       ),
@@ -142,7 +129,7 @@ class _MenuPageState extends State<MenuPage> {
     } else if (currentPageIndex == 1) {
       return _compte;
     } else if (currentPageIndex == 2) {
-      return _transfert;
+      return _monetique;
     } else if (currentPageIndex == 3) {
       return _credit;
     } else {
